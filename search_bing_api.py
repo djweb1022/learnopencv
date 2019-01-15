@@ -2,7 +2,9 @@
 __author__ = 'yfj'
 __date__ = '2019/1/14 13:48'
 
-# 使用时，进入虚拟环境，cd到根目录，执行 python search_bing_api.py --query "owen grady" --output dataset/owen_grady
+# 使用时，进入虚拟环境，cd到根目录，执行:
+# python search_bing_api.py --query "owen grady" --output dataset/owen_grady
+
 # import the necessary packages
 from requests import exceptions
 import argparse

@@ -65,8 +65,7 @@ while True:
     if FPS_DIV == 0:
         FPS_DIV = 0.01
     FPS_num = 1.0 / FPS_DIV
-    FPS = 'FPS:' + str(round(FPS_num, 2))
-    cv2.putText(frame, FPS, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
+    cv2.putText(frame, "FPS: {:.2f}".format(FPS_num), (150, 30), cv2.FONT_HERSHEY_SIMPLEX,
                 0.5, (0, 0, 255), 2)
 
     # show the frame

@@ -44,7 +44,7 @@ args = vars(ap.parse_args())
 # define two constants, one for the eye aspect ratio to indicate
 # blink and then a second constant for the number of consecutive
 # frames the eye must be below the threshold
-EYE_AR_THRESH = 0.25
+EYE_AR_THRESH = 0.22
 EYE_AR_CONSEC_FRAMES = 1
 
 # initialize the frame counters and the total number of blinks
@@ -147,8 +147,7 @@ while True:
         if FPS_DIV == 0:
             FPS_DIV = 0.01
         FPS_num = 1.0 / FPS_DIV
-        FPS = 'FPS:' + str(round(FPS_num, 2))
-        cv2.putText(frame, FPS, (150, 30), cv2.FONT_HERSHEY_SIMPLEX,
+        cv2.putText(frame, "FPS: {:.2f}".format(FPS_num), (150, 30), cv2.FONT_HERSHEY_SIMPLEX,
                     0.5, (0, 0, 255), 2)
 
     # show the frame

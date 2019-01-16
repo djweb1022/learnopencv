@@ -41,7 +41,7 @@ while True:
     start_time = time.time()  # start time of the loop
 
     frame = vs.read()
-    frame = imutils.resize(frame, width=800)
+    frame = imutils.resize(frame, width=400)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # detect faces in the grayscale frame
@@ -56,12 +56,15 @@ while True:
         shape = face_utils.shape_to_np(shape)
 
         # loop over the (x, y)-coordinates for the facial landmarks
-        # and draw them on the image
+        # and draw them on the image color:BGR
         for (x, y) in shape:
-            cv2.circle(frame, (x, y), 1, (0, 255, 255), -1)
+            cv2.circle(frame, (x, y), 0, (0, 255, 255), 2)
 
     # 显示帧率
-    FPS_num = 1.0 / (time.time() - start_time)
+    FPS_DIV = time.time() - start_time
+    if FPS_DIV == 0:
+        FPS_DIV = 0.01
+    FPS_num = 1.0 / FPS_DIV
     FPS = 'FPS:' + str(round(FPS_num, 2))
     cv2.putText(frame, FPS, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
                 0.7, (0, 0, 255), 2)
@@ -69,8 +72,6 @@ while True:
     # show the frame
     cv2.imshow("Frame", frame)
     key = cv2.waitKey(1) & 0xFF
-
-    # print("FPS: ", 1.0 / (time.time() - start_time))  # FPS = 1 / time to process loop
 
     # if the `q` key was pressed, break from the loop
     if key == ord("q"):

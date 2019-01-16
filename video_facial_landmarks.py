@@ -15,7 +15,7 @@ import cv2
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape_predictor", required=True,
+ap.add_argument("-p", "--shape_predictor", default="shape_predictor_68_face_landmarks.dat",
                 help="path to facial landmark predictor")
 ap.add_argument("-r", "--picamera", type=int, default=-1,
                 help="whether or not the Raspberry Pi camera should be used")
@@ -67,7 +67,7 @@ while True:
     FPS_num = 1.0 / FPS_DIV
     FPS = 'FPS:' + str(round(FPS_num, 2))
     cv2.putText(frame, FPS, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-                0.7, (0, 0, 255), 2)
+                0.5, (0, 0, 255), 2)
 
     # show the frame
     cv2.imshow("Frame", frame)
